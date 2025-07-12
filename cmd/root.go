@@ -10,9 +10,9 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "go-blueprint",
+	Use:   "mkrgen",
 	Short: "A program to spin up a quick Go project using a popular framework",
-	Long: `Go Blueprint is a CLI tool that allows users to spin up a Go project with the corresponding structure seamlessly. 
+	Long: `mkrgen is a CLI tool that allows users to spin up a Go project with the corresponding structure seamlessly. 
 It also gives the option to integrate with one of the more popular Go frameworks!`,
 }
 

@@ -3,7 +3,7 @@ package steps
 import (
 	"testing"
 
-	"github.com/melkeydev/go-blueprint/cmd/flags"
+	"github.com/noxymon-mekari/mkrgen/cmd/flags"
 )
 
 func TestWorkerInAdvancedSteps(t *testing.T) {

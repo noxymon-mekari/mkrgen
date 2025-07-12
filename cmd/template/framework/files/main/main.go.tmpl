@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
+	{{if .AdvancedOptions.swagger}}"os"{{end}}
 	"os/signal"
 	"syscall"
 	"time"

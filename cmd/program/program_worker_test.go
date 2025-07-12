@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/melkeydev/go-blueprint/cmd/flags"
-	"github.com/melkeydev/go-blueprint/cmd/template/advanced"
+	"github.com/noxymon-mekari/mkrgen/cmd/flags"
+	"github.com/noxymon-mekari/mkrgen/cmd/template/advanced"
 )
 
 func TestCreateWorkerFiles(t *testing.T) {

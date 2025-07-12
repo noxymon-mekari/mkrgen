@@ -5,8 +5,8 @@ package multiInput
 import (
 	"fmt"
 
-	"github.com/melkeydev/go-blueprint/cmd/program"
-	"github.com/melkeydev/go-blueprint/cmd/steps"
+	"github.com/noxymon-mekari/mkrgen/cmd/program"
+	"github.com/noxymon-mekari/mkrgen/cmd/steps"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"

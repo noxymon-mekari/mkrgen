@@ -1,9 +1,9 @@
 ## Creating a Project
 
-After installing the Go-Blueprint CLI tool, you can create a new project with the default settings by running the following command:
+After installing the mkrgen CLI tool, you can create a new project with the default settings by running the following command:
 
 ```bash
-go-blueprint create
+mkrgen create
 ```
 
 This command will interactively guide you through the project setup process, allowing you to choose the project name, framework, and database driver.
@@ -15,7 +15,7 @@ This command will interactively guide you through the project setup process, all
 For a non-interactive setup, you can use flags to provide the necessary information during project creation. Here's an example:
 
 ```
-go-blueprint create --name my-project --framework gin --driver postgres --git commit
+mkrgen create --name my-project --framework gin --driver postgres --git commit
 ```
 
 In this example:
@@ -29,15 +29,15 @@ Customize the flags according to your project requirements.
 
 ## Advanced Flag
 
-By including the `--advanced` flag, users can choose one or all of the advanced features, HTMX, GitHub Actions for CI/CD, Websocket, Docker and TailwindCSS support, during the project creation process. The flag enhances the simplicity of Blueprint while offering flexibility for users who require additional functionality.
+By including the `--advanced` flag, users can choose one or all of the advanced features, HTMX, GitHub Actions for CI/CD, Websocket, Docker and TailwindCSS support, during the project creation process. The flag enhances the simplicity of mkrgen while offering flexibility for users who require additional functionality.
 
 ```bash
-go-blueprint create --advanced
+mkrgen create --advanced
 ```
 
 To recreate the project using the same configuration semi-interactively, use the following command:
 ```bash
-go-blueprint create --name my-project --framework chi --driver mysql --git commit --advanced
+mkrgen create --name my-project --framework chi --driver mysql --git commit --advanced
 ```
 This approach opens interactive mode only for advanced features, which allows you to choose the one or combination of available features.
 
@@ -49,25 +49,25 @@ Advanced features can be enabled using the `--feature` flag along with the `--ad
 
 HTMX:
 ```bash
-go-blueprint create --advanced --feature htmx
+mkrgen create --advanced --feature htmx
 ```
 
 CI/CD workflow:
 ```bash
-go-blueprint create --advanced --feature githubaction
+mkrgen create --advanced --feature githubaction
 ```
 
 Websocket:
 ```bash
-go-blueprint create --advanced --feature websocket
+mkrgen create --advanced --feature websocket
 ```
 TailwindCSS:
 ```bash
-go-blueprint create --advanced --feature tailwind
+mkrgen create --advanced --feature tailwind
 ```
 Docker:
 ```bash
-go-blueprint create --advanced --feature docker
+mkrgen create --advanced --feature docker
 ```
 
 Or all features at once:

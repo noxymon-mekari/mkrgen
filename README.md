@@ -2,11 +2,11 @@
 
 <div style="text-align: center;">
   <h1>
-    Introducing the Ultimate Golang Blueprint Library
+    Introducing the Ultimate Golang mkrgen Library
   </h1>
 </div>
 
-Go Blueprint is a CLI tool that allows users to spin up a Go project with the corresponding structure seamlessly. It also
+mkrgen is a CLI tool that allows users to spin up a Go project with the corresponding structure seamlessly. It also
 gives the option to integrate with one of the more popular Go frameworks (and the list is growing with new features)!
 
 ### Why Would I use this?
@@ -38,7 +38,7 @@ gives the option to integrate with one of the more popular Go frameworks (and th
 </h2>
 
 ```bash
-go install github.com/melkeydev/go-blueprint@latest
+go install github.com/noxymon-mekari/mkrgen@latest
 ```
 
 This installs a go binary that will automatically bind to your $GOPATH
@@ -58,16 +58,16 @@ source ~/.zshrc
 Then in a new terminal run:
 
 ```bash
-go-blueprint create
+mkrgen create
 ```
 
 You can also use the provided flags to set up a project without interacting with the UI.
 
 ```bash
-go-blueprint create --name my-project --framework gin --driver postgres --git commit
+mkrgen create --name my-project --framework gin --driver postgres --git commit
 ```
 
-See `go-blueprint create -h` for all the options and shorthands.
+See `mkrgen create -h` for all the options and shorthands.
 
 <a id="frameworks-supported"></a>
 
@@ -94,7 +94,7 @@ See `go-blueprint create -h` for all the options and shorthands.
   Database Support
 </h2>
 
-Go Blueprint now offers enhanced database support, allowing you to choose your preferred database driver during project setup. Use the `--driver` or `-d` flag to specify the database driver you want to integrate into your project.
+mkrgen now offers enhanced database support, allowing you to choose your preferred database driver during project setup. Use the `--driver` or `-d` flag to specify the database driver you want to integrate into your project.
 
 ### Supported Database Drivers
 
@@ -138,7 +138,7 @@ Note: Selecting Tailwind option will automatically select HTMX unless React is e
   Blueprint UI
 </h2>
 
-Blueprint UI is a web application that allows you to create commands for the CLI and preview the structure of your project. You will be able to see directories and files that will be created upon command execution. Check it out at [go-blueprint.dev](https://go-blueprint.dev)
+mkrgen UI is a web application that allows you to create commands for the CLI and preview the structure of your project. You will be able to see directories and files that will be created upon command execution. Check it out at [mkrgen.dev](https://mkrgen.dev)
 
 <a id="usage-example"></a>
 
@@ -152,7 +152,7 @@ Blueprint UI is a web application that allows you to create commands for the CLI
 Here's an example of setting up a project with a specific database driver:
 
 ```bash
-go-blueprint create --name my-project --framework gin --driver postgres --git commit
+mkrgen create --name my-project --framework gin --driver postgres --git commit
 ```
 
 <p align="center">
@@ -162,7 +162,7 @@ go-blueprint create --name my-project --framework gin --driver postgres --git co
 Advanced features are accessible with the --advanced flag
 
 ```bash
-go-blueprint create --advanced
+mkrgen create --advanced
 ```
 
 Advanced features can be enabled using the `--feature` flag along with the `--advanced` flag.
@@ -170,50 +170,50 @@ Advanced features can be enabled using the `--feature` flag along with the `--ad
 HTMX:
 
 ```bash
-go-blueprint create --advanced --feature htmx
+mkrgen create --advanced --feature htmx
 ```
 
 CI/CD workflow:
 
 ```bash
-go-blueprint create --advanced --feature githubaction
+mkrgen create --advanced --feature githubaction
 ```
 
 Websocket:
 
 ```bash
-go-blueprint create --advanced --feature websocket
+mkrgen create --advanced --feature websocket
 ```
 
 Tailwind:
 
 ```bash
-go-blueprint create --advanced --feature tailwind
+mkrgen create --advanced --feature tailwind
 ```
 
 Docker:
 
 ```bash
-go-blueprint create --advanced --feature docker
+mkrgen create --advanced --feature docker
 ```
 
 React:
 
 ```bash
-go-blueprint create --advanced --feature react
+mkrgen create --advanced --feature react
 ```
 
 Or all features at once:
 
 ```bash
-go-blueprint create --name my-project --framework chi --driver mysql --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker --git commit --feature react
+mkrgen create --name my-project --framework chi --driver mysql --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker --git commit --feature react
 ```
 
 <p align="center">
   <img src="./public/blueprint_advanced.png" alt="Advanced Options" width="800"/>
 </p>
 
-**Visit [documentation](https://docs.go-blueprint.dev) to learn more about blueprint and its features.**
+**Visit [documentation](https://docs.mkrgen.dev) to learn more about mkrgen and its features.**
 
 <a id="github-stats"></a>
 

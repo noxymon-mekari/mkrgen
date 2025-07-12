@@ -1,10 +1,10 @@
 ### Site metadata ###
 
-site_name: Go-Blueprint Docs
-site_description: Official documentation for Go-Blueprint project
-site_url: https://docs.go-blueprint.dev/
+site_name: mkrgen Docs
+site_description: Official documentation for mkrgen project
+site_url: https://docs.mkrgen.dev/
 
-repo_url: https://github.com/Melkeydev/go-blueprint
+repo_url: https://github.com/noxymon-mekari/mkrgen
 edit_uri: edit/main/docs/docs
 
 ### Build settings ###

@@ -3,25 +3,25 @@ hide:
   - toc
 ---
 
-## Go Blueprint - Ultimate Golang Blueprint Library
+## mkrgen - Ultimate Golang mkrgen Library
 
 ![logo](./public/logo.png)
 
-Powerful CLI tool designed to streamline the process of creating Go projects with a robust and standardized structure. Not only does Go Blueprint facilitate project initialization, but it also offers seamless integration with popular Go frameworks, allowing you to focus on your application's code from the very beginning.
+Powerful CLI tool designed to streamline the process of creating Go projects with a robust and standardized structure. Not only does mkrgen facilitate project initialization, but it also offers seamless integration with popular Go frameworks, allowing you to focus on your application's code from the very beginning.
 
-## Why Choose Go Blueprint?
+## Why Choose mkrgen?
 
-- **Easy Setup and Installation**: Go Blueprint simplifies the setup process, making it a breeze to install and get started with your Go projects.
+- **Easy Setup and Installation**: mkrgen simplifies the setup process, making it a breeze to install and get started with your Go projects.
 
 - **Pre-established Go Project Structure**: Save time and effort by having the entire Go project structure set up automatically. No need to worry about directory layouts or configuration files.
 
-- **HTTP Server Configuration Made Easy**: Whether you prefer Go's standard library HTTP package, Chi, Gin, Fiber, HttpRouter, Gorilla/mux or Echo, Go Blueprint caters to your server setup needs.
+- **HTTP Server Configuration Made Easy**: Whether you prefer Go's standard library HTTP package, Chi, Gin, Fiber, HttpRouter, Gorilla/mux or Echo, mkrgen caters to your server setup needs.
 
-- **Focus on Your Application Code**: With Go Blueprint handling the project scaffolding, you can dedicate more time and energy to developing your application logic.
+- **Focus on Your Application Code**: With mkrgen handling the project scaffolding, you can dedicate more time and energy to developing your application logic.
 
 ## Project Structure
 
-Here's an overview of the project structure created by Go Blueprint when all options are utilized:
+Here's an overview of the project structure created by mkrgen when all options are utilized:
 
 ```bash
 / (Root)

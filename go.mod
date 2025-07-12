@@ -1,4 +1,4 @@
-module github.com/melkeydev/go-blueprint
+module github.com/noxymon-mekari/mkrgen
 
 go 1.23.0
 

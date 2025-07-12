@@ -4,7 +4,7 @@ The Worker feature enables background job processing in your Go application usin
 
 ## Overview
 
-When you enable the Worker feature, go-blueprint generates:
+When you enable the Worker feature, mkrgen generates:
 
 - A dedicated worker command (`cmd/worker/main.go`)
 - Example task definitions (`cmd/worker/tasks/`)
@@ -17,15 +17,15 @@ When you enable the Worker feature, go-blueprint generates:
 
 ```bash
 # Enable worker feature along with other options
-go-blueprint create --name myapp --framework gin --feature worker
+mkrgen create --name myapp --framework gin --feature worker
 
 # Worker can be combined with other features
-go-blueprint create --name myapp --framework gin --feature worker --feature docker
+mkrgen create --name myapp --framework gin --feature worker --feature docker
 ```
 
 ### Interactive Mode
 
-When running `go-blueprint create` interactively, the worker option will appear in the advanced features selection:
+When running `mkrgen create` interactively, the worker option will appear in the advanced features selection:
 
 ```
  What advanced features would you like to enable?
@@ -206,7 +206,7 @@ srv := asynq.NewServer(
 
 ## Integration with Other Features
 
-The worker feature integrates seamlessly with other go-blueprint features:
+The worker feature integrates seamlessly with other mkrgen features:
 
 - **Docker**: Redis service is automatically added to `docker-compose.yml`
 - **Environment**: Worker variables are included in `.env` templates
@@ -282,4 +282,4 @@ srv := asynq.NewServer(
 
 - [Asynq Documentation](https://pkg.go.dev/github.com/hibiken/asynq)
 - [Redis Documentation](https://redis.io/documentation)
-- [Go-Blueprint Advanced Features](../advanced-flag.md)
+- [mkrgen Advanced Features](../advanced-flag.md)

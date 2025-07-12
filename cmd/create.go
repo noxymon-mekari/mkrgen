@@ -9,14 +9,14 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/melkeydev/go-blueprint/cmd/flags"
-	"github.com/melkeydev/go-blueprint/cmd/program"
-	"github.com/melkeydev/go-blueprint/cmd/steps"
-	"github.com/melkeydev/go-blueprint/cmd/ui/multiInput"
-	"github.com/melkeydev/go-blueprint/cmd/ui/multiSelect"
-	"github.com/melkeydev/go-blueprint/cmd/ui/spinner"
-	"github.com/melkeydev/go-blueprint/cmd/ui/textinput"
-	"github.com/melkeydev/go-blueprint/cmd/utils"
+	"github.com/noxymon-mekari/mkrgen/cmd/flags"
+	"github.com/noxymon-mekari/mkrgen/cmd/program"
+	"github.com/noxymon-mekari/mkrgen/cmd/steps"
+	"github.com/noxymon-mekari/mkrgen/cmd/ui/multiInput"
+	"github.com/noxymon-mekari/mkrgen/cmd/ui/multiSelect"
+	"github.com/noxymon-mekari/mkrgen/cmd/ui/spinner"
+	"github.com/noxymon-mekari/mkrgen/cmd/ui/textinput"
+	"github.com/noxymon-mekari/mkrgen/cmd/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -72,7 +72,7 @@ type Options struct {
 var createCmd = &cobra.Command{
 	Use:   "create",
 	Short: "Create a Go project and don't worry about the structure",
-	Long:  "Go Blueprint is a CLI tool that allows you to focus on the actual Go code, and not the project structure. Perfect for someone new to the Go language",
+	Long:  "mkrgen is a CLI tool that allows you to focus on the actual Go code, and not the project structure. Perfect for someone new to the Go language",
 
 	Run: func(cmd *cobra.Command, args []string) {
 		var tprogram *tea.Program
