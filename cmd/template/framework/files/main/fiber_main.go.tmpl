@@ -12,6 +12,10 @@ import (
 	"{{.ProjectName}}/cmd/api/server"
 
 	_ "github.com/joho/godotenv/autoload"
+	{{if .AdvancedOptions.swagger}}
+	_ "{{.ProjectName}}/docs"
+	"{{.ProjectName}}/docs"
+	{{end}}
 )
 
 func gracefulShutdown(fiberServer *server.FiberServer, done chan bool) {
@@ -40,6 +44,14 @@ func gracefulShutdown(fiberServer *server.FiberServer, done chan bool) {
 }
 
 func main() {
+	{{if .AdvancedOptions.swagger}}
+	// Configure Swagger base URL from environment variable
+	baseURL := os.Getenv("API_BASE_URL")
+	if baseURL != "" {
+		// Overwrite the host in Swagger docs
+		docs.SwaggerInfo.Host = baseURL
+	}
+	{{end}}
 
 	server := server.New()
 

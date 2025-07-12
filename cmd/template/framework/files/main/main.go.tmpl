@@ -1,15 +1,39 @@
 package main
 
+{{if .AdvancedOptions.swagger}}
+// @title           {{.ProjectName}} API
+// @version         1.0
+// @description     This is a sample server for {{.ProjectName}}.
+// @termsOfService  http://swagger.io/terms/
+
+// @contact.name   API Support
+// @contact.url    http://www.swagger.io/support
+// @contact.email  support@swagger.io
+
+// @license.name  Apache 2.0
+// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host      localhost:8080
+// @BasePath  /
+
+// @securityDefinitions.basic  BasicAuth
+{{end}}
+
 import (
 	"context"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
 	"{{.ProjectName}}/cmd/api/server"
+	{{if .AdvancedOptions.swagger}}
+	_ "{{.ProjectName}}/docs"
+	"{{.ProjectName}}/docs"
+	{{end}}
 )
 
 func gracefulShutdown(apiServer *http.Server, done chan bool) {
@@ -38,6 +62,14 @@ func gracefulShutdown(apiServer *http.Server, done chan bool) {
 }
 
 func main() {
+	{{if .AdvancedOptions.swagger}}
+	// Configure Swagger base URL from environment variable
+	baseURL := os.Getenv("API_BASE_URL")
+	if baseURL != "" {
+		// Overwrite the host in Swagger docs
+		docs.SwaggerInfo.Host = baseURL
+	}
+	{{end}}
 
 	server := server.NewServer()
 

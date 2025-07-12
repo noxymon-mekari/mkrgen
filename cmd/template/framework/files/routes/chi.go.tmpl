@@ -40,6 +40,16 @@ func (s *Server) RegisterRoutes() http.Handler {
 	return r
 }
 
+{{if .AdvancedOptions.swagger}}
+// HelloWorldHandler returns a hello world message
+// @Summary      Show hello world
+// @Description  get hello world message
+// @Tags         health
+// @Accept       json
+// @Produce      json
+// @Success      200  {object}  map[string]string
+// @Router       / [get]
+{{end}}
 func (s *Server) HelloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	resp := make(map[string]string)
 	resp["message"] = "Hello World"
@@ -53,6 +63,16 @@ func (s *Server) HelloWorldHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 {{if ne .DBDriver "none"}}
+{{if .AdvancedOptions.swagger}}
+// healthHandler returns the health status of the database
+// @Summary      Health check
+// @Description  get the health status of the database
+// @Tags         health
+// @Accept       json
+// @Produce      json
+// @Success      200  {object}  map[string]interface{}
+// @Router       /health [get]
+{{end}}
 func (s *Server) healthHandler(w http.ResponseWriter, r *http.Request) {
 	jsonResp, _ := json.Marshal(s.db.Health())
 	_, _ = w.Write(jsonResp)

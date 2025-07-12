@@ -89,6 +89,7 @@ var kafkaEnvTemplate []byte
 var kafkaConsumerMainTemplate []byte
 
 // Helper functions for React files
+//
 //go:embed files/worker/cmd/worker/main.go.tmpl
 var workerMainTemplate []byte
 
@@ -97,6 +98,50 @@ var workerHelloWorldTaskTemplate []byte
 
 //go:embed files/worker/env.tmpl
 var workerEnvTemplate []byte
+
+// Swagger template files
+//
+//go:embed files/swagger/imports/standard_library.tmpl
+var stdLibSwaggerImports []byte
+
+//go:embed files/swagger/routes/standard_library.tmpl
+var stdLibSwaggerRoutes []byte
+
+//go:embed files/swagger/imports/gin.tmpl
+var ginSwaggerImports []byte
+
+//go:embed files/swagger/routes/gin.tmpl
+var ginSwaggerRoutes []byte
+
+//go:embed files/swagger/imports/echo.tmpl
+var echoSwaggerImports []byte
+
+//go:embed files/swagger/routes/echo.tmpl
+var echoSwaggerRoutes []byte
+
+//go:embed files/swagger/imports/fiber.tmpl
+var fiberSwaggerImports []byte
+
+//go:embed files/swagger/routes/fiber.tmpl
+var fiberSwaggerRoutes []byte
+
+//go:embed files/swagger/imports/chi.tmpl
+var chiSwaggerImports []byte
+
+//go:embed files/swagger/routes/chi.tmpl
+var chiSwaggerRoutes []byte
+
+//go:embed files/swagger/imports/gorilla.tmpl
+var gorillaSwaggerImports []byte
+
+//go:embed files/swagger/routes/gorilla.tmpl
+var gorillaSwaggerRoutes []byte
+
+//go:embed files/swagger/routes/http_router.tmpl
+var httpRouterSwaggerRoutes []byte
+
+//go:embed files/swagger/README_SWAGGER.md
+var swaggerReadme []byte
 
 // Helper functions for React files
 func EchoHtmxTemplRoutesTemplate() []byte {
@@ -221,4 +266,61 @@ func WorkerHelloWorldTaskTemplate() []byte {
 
 func WorkerEnvTemplate() []byte {
 	return workerEnvTemplate
+}
+
+// Swagger template functions
+func StdLibSwaggerImportsTemplate() []byte {
+	return stdLibSwaggerImports
+}
+
+func StdLibSwaggerRoutesTemplate() []byte {
+	return stdLibSwaggerRoutes
+}
+
+func GinSwaggerImportsTemplate() []byte {
+	return ginSwaggerImports
+}
+
+func GinSwaggerRoutesTemplate() []byte {
+	return ginSwaggerRoutes
+}
+
+func EchoSwaggerImportsTemplate() []byte {
+	return echoSwaggerImports
+}
+
+func EchoSwaggerRoutesTemplate() []byte {
+	return echoSwaggerRoutes
+}
+
+func FiberSwaggerImportsTemplate() []byte {
+	return fiberSwaggerImports
+}
+
+func FiberSwaggerRoutesTemplate() []byte {
+	return fiberSwaggerRoutes
+}
+
+func ChiSwaggerImportsTemplate() []byte {
+	return chiSwaggerImports
+}
+
+func ChiSwaggerRoutesTemplate() []byte {
+	return chiSwaggerRoutes
+}
+
+func GorillaSwaggerImportsTemplate() []byte {
+	return gorillaSwaggerImports
+}
+
+func GorillaSwaggerRoutesTemplate() []byte {
+	return gorillaSwaggerRoutes
+}
+
+func HttpRouterSwaggerRoutesTemplate() []byte {
+	return httpRouterSwaggerRoutes
+}
+
+func SwaggerReadmeTemplate() []byte {
+	return swaggerReadme
 }

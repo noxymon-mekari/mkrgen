@@ -33,6 +33,16 @@ func (s *FiberServer) RegisterFiberRoutes() {
   {{.AdvancedTemplates.TemplateRoutes}}
 }
 
+{{if .AdvancedOptions.swagger}}
+// HelloWorldHandler returns a hello world message
+// @Summary      Show hello world
+// @Description  get hello world message
+// @Tags         health
+// @Accept       json
+// @Produce      json
+// @Success      200  {object}  map[string]string
+// @Router       / [get]
+{{end}}
 func (s *FiberServer) HelloWorldHandler(c *fiber.Ctx) error {
 	resp := fiber.Map{
 		"message": "Hello World",
@@ -42,6 +52,16 @@ func (s *FiberServer) HelloWorldHandler(c *fiber.Ctx) error {
 }
 
 {{if ne .DBDriver "none"}}
+{{if .AdvancedOptions.swagger}}
+// healthHandler returns the health status of the database
+// @Summary      Health check
+// @Description  get the health status of the database
+// @Tags         health
+// @Accept       json
+// @Produce      json
+// @Success      200  {object}  map[string]interface{}
+// @Router       /health [get]
+{{end}}
 func (s *FiberServer) healthHandler(c *fiber.Ctx) error {
 	return c.JSON(s.db.Health())
 }

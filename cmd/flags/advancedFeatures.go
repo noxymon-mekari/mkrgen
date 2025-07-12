@@ -17,9 +17,10 @@ const (
 	Kafka             string = "kafka"
 	Worker            string = "worker"
 	Redis             string = "redis"
+	Swagger           string = "swagger"
 )
 
-var AllowedAdvancedFeatures = []string{string(React), string(Htmx), string(GoProjectWorkflow), string(Websocket), string(Tailwind), string(Docker), string(Kafka), string(Worker), string(Redis)}
+var AllowedAdvancedFeatures = []string{string(React), string(Htmx), string(GoProjectWorkflow), string(Websocket), string(Tailwind), string(Docker), string(Kafka), string(Worker), string(Redis), string(Swagger)}
 
 func (f AdvancedFeatures) String() string {
 	return strings.Join(f, ",")

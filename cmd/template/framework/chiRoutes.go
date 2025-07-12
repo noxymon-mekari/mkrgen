@@ -43,3 +43,11 @@ func (c ChiTemplates) HtmxTemplRoutes() []byte {
 func (c ChiTemplates) WebsocketImports() []byte {
 	return advanced.StdLibWebsocketTemplImportsTemplate()
 }
+
+func (c ChiTemplates) SwaggerImports() []byte {
+	return advanced.ChiSwaggerImportsTemplate()
+}
+
+func (c ChiTemplates) SwaggerRoutes() []byte {
+	return advanced.ChiSwaggerRoutesTemplate()
+}

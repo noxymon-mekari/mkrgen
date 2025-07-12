@@ -73,6 +73,8 @@ type Templater interface {
 	HtmxTemplRoutes() []byte
 	HtmxTemplImports() []byte
 	WebsocketImports() []byte
+	SwaggerImports() []byte
+	SwaggerRoutes() []byte
 }
 
 type DBDriverTemplater interface {
@@ -115,6 +117,7 @@ var (
 
 	godotenvPackage = []string{"github.com/joho/godotenv"}
 	templPackage    = []string{"github.com/a-h/templ"}
+	swaggerPackage  = []string{"github.com/swaggo/swag/cmd/swag", "github.com/swaggo/files", "github.com/swaggo/gin-swagger", "github.com/swaggo/echo-swagger", "github.com/swaggo/fiber-swagger", "github.com/swaggo/http-swagger"}
 )
 
 const (
@@ -623,7 +626,6 @@ func (p *Project) CreateMainFile() error {
 			}
 		}
 
-		p.CreateHtmxTemplates()
 	}
 
 	// Create .github/workflows folder and inject release.yml and go-test.yml
@@ -711,6 +713,24 @@ func (p *Project) CreateMainFile() error {
 		if err != nil {
 			return err
 		}
+	}
+
+	if p.AdvancedOptions[string(flags.Swagger)] {
+		err := utils.GoGetPackage(projectPath, swaggerPackage)
+		if err != nil {
+			log.Println("Could not install go dependency for Swagger")
+			return err
+		}
+
+		err = p.CreateSwaggerFiles(projectPath)
+		if err != nil {
+			return err
+		}
+	}
+
+	// Call CreateAdvancedTemplates if any advanced features that need template injection are enabled
+	if p.AdvancedOptions[string(flags.Htmx)] || p.AdvancedOptions[string(flags.Swagger)] {
+		p.CreateAdvancedTemplates()
 	}
 
 	// Using the embedded static files for tailwind and htmx
@@ -944,6 +964,15 @@ func (p *Project) CreateFileWithInjection(pathToCreate string, projectPath strin
 	return nil
 }
 
+// checkNpmInstalled checks if npm is installed on the system
+func checkNpmInstalled() error {
+	_, err := exec.LookPath("npm")
+	if err != nil {
+		return fmt.Errorf("npm is not installed or not in PATH: %w", err)
+	}
+	return nil
+}
+
 func (p *Project) CreateViteReactProject(projectPath string) error {
 	if err := checkNpmInstalled(); err != nil {
 		return err
@@ -1068,12 +1097,17 @@ func (p *Project) CreateViteReactProject(projectPath string) error {
 	return nil
 }
 
-func (p *Project) CreateHtmxTemplates() {
+func (p *Project) CreateAdvancedTemplates() {
 	routesPlaceHolder := ""
 	importsPlaceHolder := ""
 	if p.AdvancedOptions[string(flags.Htmx)] {
 		routesPlaceHolder += string(p.FrameworkMap[p.ProjectType].templater.HtmxTemplRoutes())
 		importsPlaceHolder += string(p.FrameworkMap[p.ProjectType].templater.HtmxTemplImports())
+	}
+
+	if p.AdvancedOptions[string(flags.Swagger)] {
+		routesPlaceHolder += "\n\t" + string(p.FrameworkMap[p.ProjectType].templater.SwaggerRoutes())
+		importsPlaceHolder += "\n" + string(p.FrameworkMap[p.ProjectType].templater.SwaggerImports())
 	}
 
 	routeTmpl, err := template.New("routes").Parse(routesPlaceHolder)
@@ -1322,10 +1356,87 @@ func (p *Project) CreateRedisFiles(appDir string) error {
 	return nil
 }
 
-func checkNpmInstalled() error {
-	cmd := exec.Command("npm", "--version")
-	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("npm is not installed: %w", err)
+// CreateSwaggerFiles creates necessary docs directory and documentation files for Swagger
+func (p *Project) CreateSwaggerFiles(appDir string) error {
+	// Create docs directory
+	docsDir := filepath.Join(appDir, "docs")
+	err := os.MkdirAll(docsDir, 0755)
+	if err != nil {
+		return err
 	}
+
+	// Create docs.go file that includes swagger documentation
+	docsFile, err := os.Create(filepath.Join(docsDir, "docs.go"))
+	if err != nil {
+		return err
+	}
+	defer docsFile.Close()
+
+	// Write the docs.go content directly
+	docsContent := fmt.Sprintf(`package docs
+
+import "github.com/swaggo/swag"
+
+const docTemplate = `+"`"+`{
+    "swagger": "2.0",
+    "info": {
+        "description": "{{.Description}}",
+        "title": "{{.Title}}",
+        "version": "{{.Version}}"
+    },
+    "host": "{{.Host}}",
+    "basePath": "{{.BasePath}}",
+    "paths": {}
+}`+"`"+`
+
+// SwaggerInfo holds exported Swagger Info so clients can modify it
+var SwaggerInfo = &swag.Spec{
+	Version:          "1.0",
+	Host:             "localhost:8080",
+	BasePath:         "/",
+	Schemes:          []string{},
+	Title:            "%s API",
+	Description:      "This is a sample server for %s.",
+	InfoInstanceName: "swagger",
+	SwaggerTemplate:  docTemplate,
+	LeftDelim:        "{{",
+	RightDelim:       "}}",
+}
+
+func init() {
+	swag.Register(SwaggerInfo.InstanceName(), SwaggerInfo)
+}
+`, p.ProjectName, p.ProjectName)
+
+	_, err = docsFile.WriteString(docsContent)
+	if err != nil {
+		return err
+	}
+
+	// Create swagger.json and swagger.yaml placeholder files
+	swaggerJSONFile, err := os.Create(filepath.Join(docsDir, "swagger.json"))
+	if err != nil {
+		return err
+	}
+	defer swaggerJSONFile.Close()
+
+	swaggerYAMLFile, err := os.Create(filepath.Join(docsDir, "swagger.yaml"))
+	if err != nil {
+		return err
+	}
+	defer swaggerYAMLFile.Close()
+
+	// Create README file for Swagger documentation
+	readmeFile, err := os.Create(filepath.Join(appDir, "README_SWAGGER.md"))
+	if err != nil {
+		return err
+	}
+	defer readmeFile.Close()
+
+	_, err = readmeFile.Write(advanced.SwaggerReadmeTemplate())
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
