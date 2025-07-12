@@ -1,4 +1,4 @@
-![logo](./public/logo.png)
+![logo](https://github.com/user-attachments/assets/36f69422-db42-4abe-8376-c9568b535912)
 
 <div style="text-align: center;">
   <h1>
