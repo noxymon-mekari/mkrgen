@@ -2,20 +2,28 @@
 
 <div style="text-align: center;">
   <h1>
-    Introducing the Ultimate Golang mkrgen Library
+    Production-Ready Microservices Boilerplate Generator
   </h1>
 </div>
 
-mkrgen is a CLI tool that allows users to spin up a Go project with the corresponding structure seamlessly. It also
-gives the option to integrate with one of the more popular Go frameworks (and the list is growing with new features)!
+> **Acknowledgment**: This project is a fork of [go-blueprint](https://github.com/Melkeydev/go-blueprint/) that has been enhanced and adjusted to fulfill a broader use case of generating production-ready microservices architecture and patterns.
+
+mkrgen is a powerful CLI tool that generates production-ready Go microservices with standardized architecture patterns. It provides comprehensive boilerplate code, advanced integrations, and enterprise-grade features to accelerate your microservices development from day one.
 
 ### Why Would I use this?
 
 - Easy to set up and install
-- Have the entire Go structure already established
-- Setting up a Go HTTP server (or Fasthttp with Fiber)
-- Integrate with a popular frameworks
-- Focus on the actual code of your application
+- Production-ready microservices architecture patterns
+- Complete Go project structure with enterprise-grade organization
+- Advanced HTTP server setup with popular frameworks
+- Integrated database layers with multiple driver support
+- Background job processing with Worker patterns
+- Kafka consumer implementations for event-driven architecture
+- Built-in observability and monitoring patterns
+- Docker and containerization support
+- CI/CD pipeline templates
+- Advanced frontend integrations (React, HTMX)
+- Focus on actual business logic instead of boilerplate setup
 
 ## Table of Contents
 
@@ -23,9 +31,7 @@ gives the option to integrate with one of the more popular Go frameworks (and th
 - [Frameworks Supported](#frameworks-supported)
 - [Database Support](#database-support)
 - [Advanced Features](#advanced-features)
-- [Blueprint UI](#blueprint-ui)
 - [Usage Example](#usage-example)
-- [GitHub Stats](#github-stats)
 - [License](#license)
 
 <a id="install"></a>
@@ -104,7 +110,6 @@ Choose from a variety of supported database drivers:
 - [Postgres](https://github.com/jackc/pgx/)
 - [Sqlite](https://github.com/mattn/go-sqlite3)
 - [Mongo](https://go.mongodb.org/mongo-driver)
-- [Redis](https://github.com/redis/go-redis)
 - [ScyllaDB GoCQL](https://github.com/scylladb/gocql)
 
 <a id="advanced-features"></a>
@@ -116,29 +121,22 @@ Choose from a variety of supported database drivers:
   Advanced Features
 </h2>
 
-Blueprint is focused on being as minimalistic as possible. That being said, we wanted to offer the ability to add other features people may want without bloating the overall experience.
+mkrgen provides enterprise-grade advanced features designed for production microservices. These features can be enabled individually or combined to create comprehensive, scalable applications.
 
-You can now use the `--advanced` flag when running the `create` command to get access to the following features. This is a multi-option prompt; one or more features can be used at the same time:
+You can use the `--advanced` flag when running the `create` command to access the following features. This is a multi-option prompt; one or more features can be used simultaneously:
 
-- [HTMX](https://htmx.org/) support using [Templ](https://templ.guide/)
-- CI/CD workflow setup using [Github Actions](https://docs.github.com/en/actions)
-- [Websocket](https://pkg.go.dev/github.com/coder/websocket) sets up a websocket endpoint
-- [Tailwind](https://tailwindcss.com/) css framework
-- Docker configuration for go project
-- [React](https://react.dev/) frontend written in TypeScript, including an example fetch request to the backend
+- [HTMX](https://htmx.org/) support using [Templ](https://templ.guide/) for dynamic web interfaces
+- CI/CD workflow setup using [Github Actions](https://docs.github.com/en/actions) with production-ready pipelines
+- [Websocket](https://pkg.go.dev/github.com/coder/websocket) endpoints for real-time communication
+- [Tailwind](https://tailwindcss.com/) CSS framework for modern styling
+- Docker configuration with multi-stage builds and production optimization
+- [React](https://react.dev/) frontend with TypeScript and complete backend integration
+- [Worker](https://github.com/hibiken/asynq) background job processing with Redis and asynq
+- [Kafka](https://github.com/segmentio/kafka-go) consumer implementation for event-driven architecture
+- [Redis](https://github.com/redis/go-redis) integration for caching and session management
+- [Swagger](https://swagger.io/) API documentation generation
 
 Note: Selecting Tailwind option will automatically select HTMX unless React is explicitly selected
-
-<a id="blueprint-ui"></a>
-
-<h2>
-  <picture>
-    <img src="./public/ui.gif?raw=true" width="100px" style="margin-right: 1px;">
-  </picture>
-  Blueprint UI
-</h2>
-
-mkrgen UI is a web application that allows you to create commands for the CLI and preview the structure of your project. You will be able to see directories and files that will be created upon command execution. Check it out at [mkrgen.dev](https://mkrgen.dev)
 
 <a id="usage-example"></a>
 
@@ -203,10 +201,34 @@ React:
 mkrgen create --advanced --feature react
 ```
 
+Worker (Background Jobs):
+
+```bash
+mkrgen create --advanced --feature worker
+```
+
+Kafka Consumer:
+
+```bash
+mkrgen create --advanced --feature kafka
+```
+
+Redis Integration:
+
+```bash
+mkrgen create --advanced --feature redis
+```
+
+Swagger Documentation:
+
+```bash
+mkrgen create --advanced --feature swagger
+```
+
 Or all features at once:
 
 ```bash
-mkrgen create --name my-project --framework chi --driver mysql --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker --git commit --feature react
+mkrgen create --name my-project --framework chi --driver mysql --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker --feature worker --feature kafka --feature redis --feature swagger --git commit --feature react
 ```
 
 <p align="center">
@@ -214,19 +236,6 @@ mkrgen create --name my-project --framework chi --driver mysql --advanced --feat
 </p>
 
 **Visit [documentation](https://docs.mkrgen.dev) to learn more about mkrgen and its features.**
-
-<a id="github-stats"></a>
-
-<h2>
-  <picture>
-    <img src="./public/stats.gif?raw=true" width="45px" style="margin-right: 10px;">
-  </picture>
-  GitHub Stats
-</h2>
-
-<p align="center">
-  <img alt="Alt" src="https://repobeats.axiom.co/api/embed/7c4be18864d441f961be61186ce49b5471a9e7bf.svg" title="Repobeats analytics image"/>
-</p>
 
 <a id="license"></a>
 
