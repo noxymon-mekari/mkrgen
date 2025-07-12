@@ -8,7 +8,7 @@ mkrgen create
 
 This command will interactively guide you through the project setup process, allowing you to choose the project name, framework, and database driver.
 
-![BlueprintInteractive](../public/blueprint_1.png)
+![mkrgenInteractive](../public/blueprint_1.png)
 
 ## Using Flags for Non-Interactive Setup
 
@@ -72,5 +72,5 @@ mkrgen create --advanced --feature docker
 
 Or all features at once:
 ```bash
-go-blueprint create --name my-project --framework chi --driver mysql --git commit --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker
+mkrgen create --name my-project --framework chi --driver mysql --git commit --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker
 ```

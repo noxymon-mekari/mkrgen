@@ -1,6 +1,6 @@
 # Kafka Consumer
 
-The Kafka consumer feature adds a complete Kafka consumer implementation to your Go Blueprint project using the `github.com/segmentio/kafka-go` library. This feature creates a structured, production-ready Kafka consumer that can be easily integrated into your application.
+The Kafka consumer feature adds a complete Kafka consumer implementation to your mkrgen project using the `github.com/segmentio/kafka-go` library. This feature creates a structured, production-ready Kafka consumer that can be easily integrated into your application.
 
 ## Features
 
@@ -48,7 +48,7 @@ KAFKA_TOPIC=<your-project-name>-topic
 Generate a project with Kafka consumer support:
 
 ```bash
-go-blueprint create --name my-project --framework gin --feature kafka
+mkrgen create --name my-project --framework gin --feature kafka
 ```
 
 ### Standalone Consumer Binary (Recommended)
@@ -280,4 +280,4 @@ A default message handler that logs the message content.
 
 - [Kafka-go Documentation](https://github.com/segmentio/kafka-go)
 - [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
-- [Go Blueprint Documentation](https://github.com/melkeydev/go-blueprint)
+- [mkrgen Documentation](https://github.com/noxymon-mekari/mkrgen)

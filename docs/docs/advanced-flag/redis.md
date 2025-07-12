@@ -1,6 +1,6 @@
 # Redis Integration
 
-This guide explains how to use Redis as an advanced feature in your Go-Blueprint project.
+This guide explains how to use Redis as an advanced feature in your mkrgen project.
 
 ## Overview
 
@@ -8,7 +8,7 @@ The Redis integration provides a ready-to-use Redis client setup with configurat
 
 ## What's Included
 
-When you select Redis as an advanced feature, Go-Blueprint will generate:
+When you select Redis as an advanced feature, mkrgen will generate:
 
 - **Redis Client**: A configured Redis client using `github.com/redis/go-redis/v9`
 - **Interface Abstraction**: Clean interface definitions for Redis operations

@@ -31,12 +31,12 @@ theme:
 nav:
   - Home: index.md
   - Installation: installation.md
-  - Blueprint UI: blueprint-ui.md
+  - mkrgen UI: blueprint-ui.md
   - Project creation & default config:
     - Project init: creating-project/project-init.md
     - Makefile: creating-project/makefile.md
     - Air: creating-project/air.md
-  - Blueprint Core:
+  - mkrgen Core:
     - Frameworks: blueprint-core/frameworks.md
     - DB Drivers: blueprint-core/db-drivers.md
   - Advanced Flag:
@@ -63,18 +63,9 @@ nav:
 
 extra:
     social:
-      - icon: fontawesome/brands/discord
-        link: https://discord.com/invite/HHZMSCu
-        name: Discord
-      - icon: fontawesome/brands/twitch
-        link: https://www.twitch.tv/melkey
-        name: Twitch
-      - icon: fontawesome/brands/youtube
-        link: https://www.youtube.com/@MelkeyDev
-        name: YouTube
-      - icon: fontawesome/brands/twitter
-        link: https://x.com/MelkeyDev
-        name: Twitter
+      - icon: fontawesome/brands/github
+        link: https://github.com/noxymon-mekari/mkrgen
+        name: GitHub
     generator: false
 
-copyright: Copyright &copy; 2025 Melkey
+copyright: Copyright &copy; 2025 noxymon-mekari
